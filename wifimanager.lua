@@ -10,7 +10,7 @@ if file.open("credentials.lua") then
   file.close()
   dofile("credentials.lua")
   -- file exists, running on station mode
-  dofile("station_mode.lua")
+  dofile("wificonnect.lua")
 -- elseif file.open("ap_mode.lua") then
 --   -- file don't exists, runnning on ap mode
 --   print("Credentials file not found, going into AP mode")
