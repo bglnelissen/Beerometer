@@ -13,8 +13,10 @@ config_wifi.ssid=SSID
 config_wifi.pwd=PASS
 wifi.sta.config(config_wifi)
 wifi.sta.connect()
+
 -- Finite loop to check if wifi is connected
 tmr.alarm(2,5000,1,function()
+  print('Timer loop...')
   -- Connect wifi
   if wifi.sta.getip() == nil then
     print('IP unavaiable, waiting...')
