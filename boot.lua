@@ -1,6 +1,7 @@
 --init.lua
 -- b.nelissen
 -- winter 2018/2019
+-- rename to init.lua when it all works fine.
 
 -- This file makes sure it all boots and is verbose on its actions for debugging.
 
