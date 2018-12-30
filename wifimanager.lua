@@ -1,23 +1,37 @@
+--wifimanager.lua
 -- b.nelissen
--- 2018 dec
+-- winter 2018/2019
 
 -- print filename
-print("wifimanager.lua")
+print("credentials.lua")
 
 -- check if file credentials.lua exists on device
-if file.open("credentials.lua") then
-  print(file.read())
-  file.close()
-  dofile("credentials.lua")
-  -- file exists, running on station mode
-  dofile("wificonnect.lua")
--- elseif file.open("ap_mode.lua") then
---   -- file don't exists, runnning on ap mode
---   print("Credentials file not found, going into AP mode")
---   dofile("ap_mode.lua")
-else
-  print("Error, files not found:")
-  print("- credentials.lua")
-  print("- ap_mode.lua")
-end
+if file_exists("credentials.lua") then
+	dofile('credentials.lua')
+	
+	-- The WiFi mode, as one of the wifi.STATION, wifi.SOFTAP, wifi.STATIONAP or wifi.NULLMODE constants.
+	wifi.setmode(wifi.STATION)
+	print("ESP8266 mode now is: " .. wifi.getmode())
 
+	-- configure the module so it can connect to the network using the received SSID and password
+	config_wifi={}
+	config_wifi.ssid=SSID
+	config_wifi.pwd=PASS
+	wifi.sta.config(config_wifi)
+	wifi.sta.connect()
+
+	-- Finite loop to check if wifi is connected
+	tmr.alarm(2,5000,1,function()
+		print('Timer loop...')
+		-- Connect wifi
+		if wifi.sta.getip() == nil then
+			print('IP unavaiable, waiting...')
+		else
+			tmr.stop(2)          
+			print('The module MAC address is: ' .. wifi.ap.getmac())
+			print('Config done, IP is '..wifi.sta.getip())
+		end
+	end)
+else
+	print('Error, file does not exists:\n- credentials.lua')
+end
