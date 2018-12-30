@@ -7,9 +7,8 @@ print("functions.lua")
 
 -- check if file is readable, return true or false
 function file_exists(name)
-	local f=io.open(name,"r")
-	if f~=nil then
-		io.close(f)
+	if file.open(name,"r")
+		file.close()
 		return true
 	else
 	return false
