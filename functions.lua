@@ -7,7 +7,7 @@ print("functions.lua")
 
 -- check if file is readable, return true or false
 function file_exists(name)
-	if file.open(name,"r")
+	if file.open(name,"r") then
 		file.close()
 		return true
 	else
