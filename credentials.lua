@@ -1,5 +1,7 @@
+--credentials.lua
 -- b.nelissen
--- 2018 dec
+-- winter 2018/2019
+-- These are indeed my WiFi credentials. Coffee is ready.
 
 -- print filename
 print("credentials.lua")
