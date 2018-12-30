@@ -1,5 +1,7 @@
+--reset.lua
 -- b.nelissen
--- 2018 dec
+-- winter 2018/2019
+
 -- https://nodemcu.readthedocs.io/en/master/en/modules/gpio/
 
 -- GPIO Pin layout
